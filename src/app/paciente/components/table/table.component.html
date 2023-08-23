@@ -1,0 +1,27 @@
+<table id="paciente-table">
+  <thead>
+    <tr>
+      <th>CODIGO</th>
+      <th>DNI</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>EDAD</th>
+      <th>CORREO</th>
+      <th>TELEFONO</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pac of pacienteList" class="banner-ingrediente-item m-1 text-center">
+      <td>{{pac.codigo}}</td>
+      <td>{{pac.dni}}</td>
+      <td>{{pac.nombre}}</td>
+      <td>{{pac.apellido}}</td>
+      <td>{{pac.edad}}</td>
+      <td>{{pac.correo}}</td>
+      <td>{{pac.telefono}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+
+</table>
