@@ -80,8 +80,8 @@
           <div class="d-flex flex-row">
             <div class="m-3 col-6">
               <label class="form-label">ESPECIALIDAD</label>
-              <select class="form-select" aria-label="Default select example" id="especialidad" name="especialidad" formControlName="especialidad">
-                <option *ngFor="let item of listaEspecialidades" [ngValue]="item" [selected]="item.codigo === medico.especialidad.codigo">
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="medico.especialidad.codigo" id="especialidad" name="especialidad" formControlName="especialidad">
+                <option *ngFor="let item of listaEspecialidades" value={{item.codigo}} [selected]="item.codigo === medico.especialidad.codigo">
                   {{ item.nombre }}
                 </option>
               </select>

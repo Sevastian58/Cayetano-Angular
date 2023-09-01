@@ -102,6 +102,7 @@ export class ModalComponent {
   onSubmit():void{
     console.log("submit ejecutado")
      if(this.myForm.invalid){
+      console.log("formulario invalido", this.medico)
       return;
      }
      else{

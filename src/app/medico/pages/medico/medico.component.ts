@@ -96,12 +96,34 @@ export class MedicoComponent {
       this.searchById(this.idRecibido);
     }
 
+    recibirIdEliminar(id:string):void{
+      this.idRecibido=id;
+
+      /*Swal.fire({
+        title: 'Desea eliminar el medico ' + this.idRecibido + '?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        denyButtonText: `No eliminar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.serMedico.deleteById(this.idRecibido).subscribe();
+          this.listAllMed();
+        } else if (result.isDenied) {
+          Swal.fire('Medico no eliminado', '', 'info')
+        }
+      })*/
+
+    }
+
     recibirMedicoGuardar(med:Medico):void{
       this.serMedico.searchById(med.codigo).subscribe(response=>{
-        if(response){
-          this.serMedico.update(med);
+        if(response!=null){
+          this.update(med);
+          this.listAllMed()
         }else{
-          this.serMedico.save(med);
+          this.save(med);
+          this.listAllMed();
         }
       })
     }

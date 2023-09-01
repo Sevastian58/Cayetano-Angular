@@ -36,8 +36,8 @@ export class MedicoService {
     return this.http.put<Medico>(url, med)
   }
 
-  deleteById(id:string):Observable<Medico>{
+  /*deleteById(id:string):Observable<Medico>{
     const url = `${this.apiUrl}eliminar/${id}`
-    return this.http.get<Medico>(url)
-  }
+    return this.http.delete<Medico>(url)
+  }*/
 }

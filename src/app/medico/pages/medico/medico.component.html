@@ -7,7 +7,7 @@
     data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="cleanMedico()">
     Nuevo Medico
     </button>
-    <app-table [medicoList]="medicos" class="p-5" (valorEnviado)="recibirId($event)" ></app-table>
+    <app-table [medicoList]="medicos" class="p-5" (valorEnviado)="recibirId($event)" (enviarIdDelete)="recibirIdEliminar($event)"></app-table>
   </div>
 </mat-sidenav-container>
 </div>
