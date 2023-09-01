@@ -1,0 +1,84 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Paciente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="onSubmit()">
+          <div class="d-flex flex-row">
+            <div class="m-3 col-2">
+              <label class="form-label">CODIGO</label>
+              <input type="text" class="form-control" [(ngModel)]="paciente.codigo" name="codigo" formControlName="codigo" readonly="readonly">
+            </div>
+            <div class="m-3 col-2">
+              <label class="form-label">DNI</label>
+              <input type="text" class="form-control" [(ngModel)]="paciente.dni" id="dni" name="dni" formControlName="dni">
+              <span class="form-text text-danger" *ngIf="myForm.get('dni')?.invalid && (myForm.get('dni')?.dirty || myForm.get('dni')?.touched)">
+                <span *ngIf="myForm.get('dni')?.hasError('required')">Este campo es requerido</span>
+                <span *ngIf="myForm.get('dni')?.hasError('pattern')">Este campo debe tener 8 números</span>
+              </span>
+            </div>
+            <div class="m-3 col-2">
+              <label class="form-label">EDAD</label>
+              <input type="number" class="form-control" [(ngModel)]="paciente.edad" id="edad" name="edad" formControlName="edad">
+              <span class="form-text text-danger" *ngIf="myForm.get('edad')?.invalid && (myForm.get('edad')?.dirty || myForm.get('edad')?.touched)">
+                <span *ngIf="myForm.get('edad')?.hasError('required')">Este campo es requerido</span>
+              </span>
+            </div>
+            <div class="m-3 col-3">
+              <label class="form-label">SEXO</label>
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="paciente.sexo" id="sexo" name="sexo" formControlName="sexo">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+              </select>
+              <span class="form-text text-danger" *ngIf="myForm.get('sexo')?.invalid && (myForm.get('sexo')?.dirty || myForm.get('sexo')?.touched)">
+                <span *ngIf="myForm.get('sexo')?.hasError('required')">Este campo es requerido</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row">
+            <div class="m-3 col-5">
+              <label class="form-label">NOMBRE</label>
+              <input type="text" class="form-control" [(ngModel)]="paciente.nombre" id="nombre" name="nombre" formControlName="nombre">
+              <span class="form-text text-danger" *ngIf="myForm.get('nombre')?.invalid && (myForm.get('nombre')?.dirty || myForm.get('nombre')?.touched)">
+                <span *ngIf="myForm.get('nombre')?.hasError('required')">Este campo es requerido</span>
+                <span *ngIf="myForm.get('nombre')?.hasError('minlength')">Este campo debe tener mínimo 3 letras</span>
+              </span>
+            </div>
+            <div class="m-3 col-5">
+              <label class="form-label">APELLIDO</label>
+              <input type="text" class="form-control" [(ngModel)]="paciente.apellido" id="apellido" name="apellido" formControlName="apellido">
+              <span class="form-text text-danger" *ngIf="myForm.get('apellido')?.invalid && (myForm.get('apellido')?.dirty || myForm.get('apellido')?.touched)">
+                <span *ngIf="myForm.get('apellido')?.hasError('required')">Este campo es requerido</span>
+                <span *ngIf="myForm.get('apellido')?.hasError('minlength')">Este campo debe tener mínimo 3 letras</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row">
+            <div class="m-3 col-5">
+              <label class="form-label">CORREO</label>
+              <input type="email" class="form-control" [(ngModel)]="paciente.correo" id="correo" name="correo" formControlName="correo">
+              <span class="form-text text-danger" *ngIf="myForm.get('correo')?.invalid && (myForm.get('correo')?.dirty || myForm.get('correo')?.touched)">
+                <span *ngIf="myForm.get('correo')?.hasError('required')">Este campo es requerido</span>
+                <span *ngIf="myForm.get('correo')?.hasError('email')">Debe ingresar un email válido</span>
+              </span>
+            </div>
+            <div class="m-3 col-5">
+              <label class="form-label">TELEFONO</label>
+              <input type="text" class="form-control" [(ngModel)]="paciente.telefono" id="telefono" name="telefono" formControlName="telefono">
+              <span class="form-text text-danger" *ngIf="myForm.get('telefono')?.invalid && (myForm.get('telefono')?.dirty || myForm.get('telefono')?.touched)">
+                <span *ngIf="myForm.get('telefono')?.hasError('required')">Este campo es requerido</span>
+                <span *ngIf="myForm.get('telefono')?.hasError('pattern')">Este campo debe tener 9 cifras</span>
+              </span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

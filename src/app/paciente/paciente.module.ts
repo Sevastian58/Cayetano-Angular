@@ -3,21 +3,31 @@ import { CommonModule } from '@angular/common';
 import { PacienteComponent } from './pages/paciente/paciente.component';
 import { TableComponent } from './components/table/table.component';
 import { SharedModule } from '../shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
+import { ModalComponent } from './components/modal/modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material/material.module';
+import Swal from 'sweetalert2'
 
 
 
 @NgModule({
   declarations: [
     PacienteComponent,
-    TableComponent
+    TableComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    DataTablesModule,
+    ReactiveFormsModule,
+    MaterialModule,
   ],
   exports:[
     PacienteComponent,
-    TableComponent
+    TableComponent,
+    ModalComponent
   ]
 })
 export class PacienteModule { }

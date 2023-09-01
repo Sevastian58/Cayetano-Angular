@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-items-left" [style.width.px]="navBarWidth" id="nav-Bar">
+<!--<div class="d-flex flex-column align-items-left" [style.width.px]="navBarWidth" id="nav-Bar">
   <div>Cayetano Heredia</div>
   <a href="#" class="nav-bar-item">
     <img src="https://i.imgur.com/n3tttbV.png" alt="img-cita">
@@ -6,7 +6,7 @@
       Medico
     </span>
   </a>
-  <a href="#" class="nav-bar-item">
+  <a (click)="onRedirectPaciente()" class="nav-bar-item">
     <img src="https://i.imgur.com/iHg04O6.png" alt="img-paciente">
     <span [style.display]="navBarDisplay">
       Paciente
@@ -30,4 +30,27 @@
       Cita
     </span>
   </a>
-</div>
+</div>-->
+
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width:'200px'}">
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item   *ngFor="let item of sidebarItems"
+        [routerLink]="item.url">
+        <mat-icon>{{item.icon}}</mat-icon>
+        {{item.label}}
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>

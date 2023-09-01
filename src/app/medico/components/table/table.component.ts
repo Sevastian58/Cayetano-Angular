@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { paciente } from '../../interfaces/paciente';
 import { Subject } from 'rxjs';
+import { Especialidad, Medico } from '../../interfaces/medico';
 
 @Component({
   selector: 'app-table',
@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class TableComponent implements OnInit{
 
-  @Input() pacienteList: paciente[] = [];
+  @Input() medicoList: Medico[] = [];
   @Output() valorEnviado = new EventEmitter<string>();
   dtOptions: DataTables.Settings = {};
   //dtTrigger:Subject<any> = new Subject<any>()
@@ -17,6 +17,7 @@ export class TableComponent implements OnInit{
 
   ngOnInit(): void {
 
+    console.log(this.medicoList)
     this.dtOptions={
       responsive:true,
       pageLength : 5
@@ -32,7 +33,8 @@ export class TableComponent implements OnInit{
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes["pacienteList"]) {
+    if (changes["medicoList"]) {
+      console.log(this. medicoList)
       this.dtOptions={
         responsive:true,
         pageLength : 5
@@ -48,7 +50,7 @@ export class TableComponent implements OnInit{
         const codigo = row.querySelector('td:first-child')?.textContent; // Obtiene el contenido de la primera celda (código)
 
         if (codigo) {
-            console.log('ID del paciente:', codigo);
+            console.log('ID del medico:', codigo);
             // Aquí puedes realizar cualquier acción que necesites con el ID del paciente
 
             this.valorEnviado.emit(codigo)
@@ -56,15 +58,22 @@ export class TableComponent implements OnInit{
     }
 }
 
-  paciente:paciente={
-      "codigo": "",
-      "dni": "",
-      "nombre": "",
-      "apellido": "",
-      "edad": 0,
-      "sexo": "",
-      "correo": "",
-      "telefono": ""
+especialidad: Especialidad= {
+  "codigo": 0,
+  "nombre": ""
+}
 
+  medico: Medico= {
+    "codigo":   "",
+    "dni":      "",
+    "nombre":   "",
+    "apellido": "",
+    "telefono": "",
+    "edad":     0,
+    "sexo":     "",
+    "correo":   "",
+    "especialidad":  this.especialidad
   }
+
+
 }

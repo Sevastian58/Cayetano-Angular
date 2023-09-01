@@ -1,4 +1,5 @@
 import { Component, ElementRef, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,32 +8,38 @@ import { Component, ElementRef, Inject } from '@angular/core';
 })
 export class NavBarComponent {
 
+
+
   windowWidth: number=0;
   navBarWidth:number=200;
   navBarDisplay:string="block";
-  constructor(private elRef: ElementRef) {
+  constructor(private elRef: ElementRef, private router:Router) {
     this.windowWidth = window.innerWidth;
 
     window.addEventListener('resize', this.onResize.bind(this));
   }
 
+  sidebarItems=[{label:'Paciente', icon:'personal_injury', url:'./paciente'},
+                {label:'Medico', icon:'med', url:'./medico'},
+                {label:'Topico', icon:'emergency', url:'./topico'},
+                {label:'Cita', icon:'date', url:'./cita'},
+                {label:'Historia Clinica', icon:'history', url:'./historial'}]
+
+
   ngOnInit(){
-    this.resizeNavBar();
+   // this.resizeNavBar();
   }
   onResize() {
-    this.windowWidth = window.innerWidth;
-    console.log(this.windowWidth)
+    //this.windowWidth = window.innerWidth;
 
-    this.resizeNavBar();
+    //this.resizeNavBar();
   }
 
-  resizeNavBar(){
+  /*resizeNavBar(){
     const navBarElement:HTMLElement=this.elRef.nativeElement.querySelector('#nav-Bar');
-    console.log(navBarElement)
     if(navBarElement){
       console.log('hola')
-      if(this.windowWidth<800){
-        console.log('reajustar navbar')
+      if(this.windowWidth<1500){
         this.navBarWidth=70;
         this.navBarDisplay="none";
       }else{
@@ -41,5 +48,9 @@ export class NavBarComponent {
       }
     }
 
+  }*/
+
+  onRedirectPaciente():void{
+    this.router.navigate(['paciente/paciente'])
   }
 }

@@ -1,0 +1,16 @@
+export interface Medico {
+  codigo:       string;
+  dni:          string;
+  nombre:       string;
+  apellido:     string;
+  telefono:     string;
+  edad:         number;
+  sexo:         string;
+  correo:       string;
+  especialidad: Especialidad;
+}
+
+export interface Especialidad {
+  codigo: number;
+  nombre: string;
+}

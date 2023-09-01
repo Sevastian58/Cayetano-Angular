@@ -1,4 +1,4 @@
-<table datatable [dtOptions]="dtOptions" class="row-border hover" style="width:100%" *ngIf="pacienteList.length>0"  id="paciente-table">
+<table datatable [dtOptions]="dtOptions" class="row-border hover" style="width:100%" *ngIf="medicoList.length >0"  id="medicoTable-table">
   <thead>
     <tr>
       <th>CODIGO</th>
@@ -8,11 +8,12 @@
       <th>EDAD</th>
       <th>CORREO</th>
       <th>TELEFONO</th>
+      <th>ESPECIALIDAD</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pac of pacienteList" class="banner-ingrediente-item">
+    <tr *ngFor="let pac of medicoList" class="banner-ingrediente-item">
       <td>{{pac.codigo}}</td>
       <td>{{pac.dni}}</td>
       <td>{{pac.nombre}}</td>
@@ -20,6 +21,7 @@
       <td>{{pac.edad}}</td>
       <td>{{pac.correo}}</td>
       <td>{{pac.telefono}}</td>
+      <td>{{pac.especialidad.nombre}}</td>
       <th>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="enviarId($event)">
           <img src="https://i.imgur.com/LjBlgTB.png" alt="editar">

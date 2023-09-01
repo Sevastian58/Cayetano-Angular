@@ -1,2 +1,18 @@
-<app-titulo class="container-fluid"></app-titulo>
-<app-table [pacienteList]="pacientes"></app-table>
+<div class="d-flex flex-row">
+  <mat-sidenav-container fullscreen>
+  <app-nav-bar></app-nav-bar>
+  <div class="d-flex flex-column container-fluid">
+    <app-titulo class="container-fluid" [titulo]="titulo"></app-titulo>
+    <button mat-button color="primary" class="p-3 float-start col-2"
+    data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="cleanPaciente()">
+    Nuevo Paciente
+    </button>
+    <app-table [pacienteList]="pacientes" class="p-5" (valorEnviado)="recibirValor($event)" ></app-table>
+  </div>
+</mat-sidenav-container>
+</div>
+
+
+<app-modal [paciente]="paciente" (enviarPacienteGuardar)="recibirPacienteGuardar($event)"></app-modal>
+
+
