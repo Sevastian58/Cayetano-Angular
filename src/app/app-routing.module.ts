@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { PacienteRountingModule } from './paciente/paciente-rounting.module';
 import { MedicoRountingModule } from './medico/medico-rounting.module';
+import { HistorialRoutingModule } from './hitorial-medico/historial-routing.module';
+import { CitaRoutingModule } from './cita/cita-routing.module';
 
 const routes: Routes = [{
   path: 'login',
@@ -40,6 +42,8 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash:true}),
+  CitaRoutingModule,
+  HistorialRoutingModule,
   MedicoRountingModule,
   PacienteRountingModule,
   LoginRoutingModule],

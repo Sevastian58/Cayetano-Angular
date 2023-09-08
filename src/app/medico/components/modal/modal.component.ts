@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Especialidad, Medico } from '../../interfaces/medico';
 import { EspecialidadService } from '../../services/especialidad.service';
+import { Sala } from 'src/app/cita/interfaces/cita';
 
 @Component({
   selector: 'app-modal',
@@ -22,6 +23,13 @@ export class ModalComponent {
     "codigo": 0,
     "nombre": "Especialidad por defecto"
   }
+
+  sala: Sala ={
+    codigo:  "",
+    estado:   "",
+    espeSala: this.especialidad
+  }
+
   @Input()
     medico: Medico= {
       "codigo":   "",
@@ -32,6 +40,7 @@ export class ModalComponent {
       "edad":     0,
       "sexo":     "",
       "correo":   "",
+      "salaMedico" : this.sala,
       "especialidad":  this.especialidad
     }
 

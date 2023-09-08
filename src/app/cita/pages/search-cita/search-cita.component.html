@@ -1,0 +1,21 @@
+<div class="d-flex flex-row">
+  <mat-sidenav-container fullscreen>
+    <app-nav-bar></app-nav-bar>
+    <div class="d-flex flex-column container-fluid">
+      <app-titulo class="container-fluid" [titulo]="titulo" ></app-titulo>
+      <div >
+        <div id="verCita-cabecera" class="d-flex flex-row justify-content-around">
+          <mat-card>
+            <mat-card-content class="cita-paciente">Simple card</mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-content class="cita-otros">Simple card</mat-card-content>
+          </mat-card>
+        </div>
+        <div id="verCita-cuerpo">
+          <app-table></app-table>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-container>
+</div>

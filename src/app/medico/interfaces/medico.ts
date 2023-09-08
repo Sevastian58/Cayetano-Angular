@@ -1,3 +1,5 @@
+import { Sala } from "src/app/cita/interfaces/cita";
+
 export interface Medico {
   codigo:       string;
   dni:          string;
@@ -7,6 +9,7 @@ export interface Medico {
   edad:         number;
   sexo:         string;
   correo:       string;
+  salaMedico:   Sala;
   especialidad: Especialidad;
 }
 

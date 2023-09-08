@@ -13,17 +13,19 @@ export class NavBarComponent {
   windowWidth: number=0;
   navBarWidth:number=200;
   navBarDisplay:string="block";
+  panelOpenState = false;
+
   constructor(private elRef: ElementRef, private router:Router) {
     this.windowWidth = window.innerWidth;
 
     window.addEventListener('resize', this.onResize.bind(this));
   }
 
-  sidebarItems=[{label:'Paciente', icon:'personal_injury', url:'./paciente'},
-                {label:'Medico', icon:'med', url:'./medico'},
+  sidebarItems=[{label:'Paciente', icon:'personal_injury', url:'/paciente'},
+                {label:'Medico', icon:'med', url:'/medico'},
                 {label:'Topico', icon:'emergency', url:'./topico'},
-                {label:'Cita', icon:'date', url:'./cita'},
-                {label:'Historia Clinica', icon:'history', url:'./historial'}]
+                //{label:'Cita', icon:'date', url:'/cita'},
+                {label:'Historia Clinica', icon:'history', url:'/historial'}]
 
 
   ngOnInit(){

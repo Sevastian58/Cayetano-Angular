@@ -1,0 +1,100 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <!--Modal content 01-->
+    <form  (ngSubmit)="onSubmit()">
+    <div class="modal-content" id="modalContent01">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Primer Modal</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fecha </label>
+            <input type="date" class="form-control" id="fecha" aria-describedby="emailHelp" value="{{fechaCita}}" [(ngModel)]="cita.fecha" id="fecha" name="fecha" disabled>
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Especialidad</label>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="cita.especialidad.codigo" id="especialidad" name="especialidad"  (change)="listarMedicoEspecialidad()">
+              <option *ngFor="let item of listaEspecialidades" [value]="item.codigo">{{item.nombre}}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Médico</label>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="cita.medico.codigo" id="medico" name="medico" (change)="definirSalaCita()">
+              <option value="0">[SELECCIONE]</option>
+              <option *ngFor="let item of listaMedicos" [value]="item.codigo">{{item.nombre}}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Sala </label>
+            <input type="text" class="form-control" aria-describedby="emailHelp"  [(ngModel)]="cita.sala.codigo" id="sala" name="sala" disabled>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="mostrarSegundoModal()">Siguiente</button>
+          </div>
+
+      </div>
+    </div>
+    <!--Modal content 02-->
+    <div class="modal-content" id="modalContent02">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Segundo Modal</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <mat-form-field class="example-full-width">
+            <mat-label style="width: 100%;">Paciente</mat-label>
+            <input type="text" matInput [formControl]="controlPaciente" [matAutocomplete]="auto" name="paciente" id="paciente" [(ngModel)]="cita.paciente">
+            <mat-autocomplete #auto="matAutocomplete"   [displayWith]="displayFn" >
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                 {{option.nombre}} {{option.apellido}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="mostrarPrimerModal()">Anterior</button>
+            <button type="button" class="btn btn-primary" (click)="mostrarTercerModal()">Siguiente</button>
+          </div>
+
+      </div>
+    </div>
+    <!--Modal content 03-->
+    <div class="modal-content" id="modalContent03">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tercer modal</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table datatable [dtOptions]="dtOptions" class="row-border hover" style="width:100%" *ngIf="horasCita.length >0"  id="medicoTable-table">
+          <thead>
+            <tr>
+              <th>Hora</th>
+              <th>CODIGO PACIENTE</th>
+              <th>NOMBRE</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let horario of horasCita" class="banner-ingrediente-item" (click)="obtenerHora($event)">
+              <td>{{horario.hora}}</td>
+              <td>{{horario.codPaciente}}</td>
+              <td>{{horario.nombrePaciente}}</td>
+            </tr>
+          </tbody>
+
+        </table>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="mostrarSegundoModal()">Anterior</button>
+          <button type="submit" class="btn btn-primary" >Guardar</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+  </div>
+</div>

@@ -46,7 +46,26 @@
         <mat-icon>{{item.icon}}</mat-icon>
         {{item.label}}
       </mat-list-item>
+
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-list-item>
+              Cita Medica
+            </mat-list-item>
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+        <mat-list-item routerLink="/cita">
+          Registrar
+        </mat-list-item>
+        <mat-list-item routerLink="/cita/search">
+          Ver citas
+        </mat-list-item>
+      </mat-expansion-panel>
+
     </mat-nav-list>
+
   </mat-sidenav>
 
   <mat-toolbar color="primary">

@@ -1,0 +1,30 @@
+<table datatable [dtOptions]="dtOptions" class="row-border hover" style="width:100%" *ngIf="citaList.length >0"  id="medicoTable-table">
+  <thead>
+    <tr>
+      <th>CODIGO</th>
+      <th>DNI</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>EDAD</th>
+      <th>CORREO</th>
+      <th>TELEFONO</th>
+      <th>ESPECIALIDAD</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pac of citaList" class="banner-ingrediente-item">
+
+      <th>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="enviarId($event)">
+          <img src="https://i.imgur.com/LjBlgTB.png" alt="editar">
+        </button>
+        <!--
+        <button class="btn btn-danger mx-1">
+          <img src="https://i.imgur.com/V8YjCOQ.png" alt="editar" (click)="enviarIdEliminar($event)">
+        </button>-->
+      </th>
+    </tr>
+  </tbody>
+
+</table>

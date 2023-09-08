@@ -1,0 +1,16 @@
+<div class="d-flex flex-row">
+  <mat-sidenav-container fullscreen>
+  <app-nav-bar></app-nav-bar>
+  <div class="d-flex flex-column container-fluid">
+    <app-titulo class="container-fluid" [titulo]="titulo" ></app-titulo>
+    <app-calendar (enviarFecha)="recibirFecha($event)"></app-calendar>
+    <button style="display: none;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn-verDia">
+      Launch static backdrop modal
+    </button>
+  </div>
+</mat-sidenav-container>
+</div>
+
+<app-modal [fechaCita]="fechaCita" (enviarCitaGuardar)="recibirCitaGuardar($event)"></app-modal>
+
+

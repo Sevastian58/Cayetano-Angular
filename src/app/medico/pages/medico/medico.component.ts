@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Especialidad, Medico } from '../../interfaces/medico';
 import { MedicoService } from '../../services/medico.service';
 import Swal from 'sweetalert2';
+import { Sala } from 'src/app/cita/interfaces/cita';
 
 @Component({
   selector: 'app-medico',
@@ -19,6 +20,13 @@ export class MedicoComponent {
     "nombre": ""
   }
 
+  sala: Sala ={
+    codigo:  "",
+    estado:   "",
+    espeSala: this.especialidad
+  }
+
+
     medico: Medico= {
       "codigo":   "",
       "dni":      "",
@@ -28,6 +36,7 @@ export class MedicoComponent {
       "edad":     0,
       "sexo":     "",
       "correo":   "",
+      "salaMedico":this.sala,
       "especialidad":  this.especialidad
     }
 
@@ -161,6 +170,7 @@ export class MedicoComponent {
                 "edad":     0,
                 "sexo":     "",
                 "correo":   "",
+                "salaMedico":this.sala,
                 "especialidad":  this.especialidad
               }
 

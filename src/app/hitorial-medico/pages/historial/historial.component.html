@@ -1,0 +1,77 @@
+<div class="d-flex flex-row">
+  <mat-sidenav-container fullscreen>
+  <app-nav-bar></app-nav-bar>
+  <div class="d-flex flex-column container-fluid">
+    <app-titulo class="container-fluid" [titulo]="titulo" ></app-titulo>
+    <!--elementos del historial clinico-->
+
+    <div class="d-flex flex-wrap container-fluid justify-content-center">
+      <div class="d-flex flex-column  m-3" style="height: 75vh;">
+        <!--datos del paciente-->
+        <div class="card w-40 datos-paciente">
+          <div class="card-body" style="height: inherit;">
+            <h2 class="card-title" *ngIf="paciente.codigo===''">Nombre de Paciente</h2>
+            <h2 class="card-title" *ngIf="paciente.codigo!==''" > {{paciente.nombre}} {{historia.pacienteHistoria.apellido}} </h2>
+
+            <div class="d-flex flex-row justify-content-around">
+              <p class="card-text"  *ngIf="paciente.codigo===''">
+                With supporting text below as a natural lead-in to.
+              </p>
+              <p class="card-text"  *ngIf="paciente.nombre!==''">
+                {{"Codigo: "+ paciente.codigo + " Edad: " + paciente.edad + " Telefono: " + paciente.telefono}}
+              </p>
+
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Buscar Paciente</button>
+            </div>
+          </div>
+        </div>
+        <!--ultimo topico paciente-->
+        <div class="card w-40 mt-2 topico-paciente">
+          <div class="card-body" style="height: inherit;">
+            <h5 class="card-title">Nombre de Paciente</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+        <div class="card w-40 mt-2 citas-scroll"  style="height: 36vh;">
+          <div class="card-body">
+            <div class="card w-40 mt-2" *ngFor="let cita of listaCitas">
+              <div class="card-body d-flex flex-row justify-content-around">
+                <span>{{cita.especialidad.nombre}}</span>
+                <span>{{cita.fecha}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="d-flex flex-column m-3">
+          <div class="card w-100" style="height: 75vh;">
+            <form (ngSubmit)="onSubmit()">
+            <div class="card-body d-flex flex-column justify-content-around" style="height: inherit;">
+              <h3>Historia:</h3>
+              <div class="card">
+                <div class="card-body" name="descripcion" id="txtOldHistory" cols="60" rows="15">
+                </div>
+              </div>
+              <br>
+              <textarea #newHistory name="newHistory" id="txtNewHistory" cols="60" rows="2"></textarea>
+              <br>
+              <button class="btn btn-primary" >Guardar</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    </div>
+</mat-sidenav-container>
+</div>
+
+<app-modal (enviarPaciente)="recibirPaciente($event)"></app-modal>

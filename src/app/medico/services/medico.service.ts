@@ -16,7 +16,7 @@ export class MedicoService {
     return this.http.get<Medico>(url)
   }
 
-  listByEspecialidad(especialidad:string):Observable<Medico[]>{
+  listByEspecialidad(especialidad:number):Observable<Medico[]>{
     const url = `${this.apiUrl}listaEspecialidad/${especialidad}`
     return this.http.get<Medico[]>(url)
   }

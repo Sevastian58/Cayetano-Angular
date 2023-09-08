@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Especialidad, Medico } from '../../interfaces/medico';
+import { Sala } from 'src/app/cita/interfaces/cita';
 
 @Component({
   selector: 'app-table',
@@ -75,10 +76,19 @@ enviarIdEliminar(event: Event): void {
         }
   }
 }
+
+
 especialidad: Especialidad= {
   "codigo": 0,
   "nombre": ""
 }
+
+sala: Sala ={
+  codigo:  "",
+  estado:   "",
+  espeSala: this.especialidad
+}
+
 
   medico: Medico= {
     "codigo":   "",
@@ -89,8 +99,11 @@ especialidad: Especialidad= {
     "edad":     0,
     "sexo":     "",
     "correo":   "",
+    "salaMedico":this.sala,
     "especialidad":  this.especialidad
   }
+
+
 
 
 }
