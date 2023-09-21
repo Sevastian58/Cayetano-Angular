@@ -1,8 +1,29 @@
 .cita-paciente{
+  min-width: 400px;
   width:45vw;
-  height:12vh;
+  height:18vh;
 }
-.cita-otros{
+#cita-otros{
+  min-width: 400px;
   width:45vw;
-  height:12vh;
+  height:30vh;
+}
+#citaCabecera02{
+  width: 100%;
+}
+#citaCabecera02>mat-card{
+  width: 80vw;
+}
+#citaCabecera02:first-child{
+  display: none;
+}
+app-table{
+  width: 80vw;
+}
+#verCita-cuerpo{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
 }

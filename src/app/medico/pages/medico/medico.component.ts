@@ -36,7 +36,6 @@ export class MedicoComponent {
       "edad":     0,
       "sexo":     "",
       "correo":   "",
-      "salaMedico":this.sala,
       "especialidad":  this.especialidad
     }
 
@@ -170,7 +169,6 @@ export class MedicoComponent {
                 "edad":     0,
                 "sexo":     "",
                 "correo":   "",
-                "salaMedico":this.sala,
                 "especialidad":  this.especialidad
               }
 

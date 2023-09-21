@@ -55,7 +55,6 @@ export class CitaComponent {
     edad:         0,
     sexo:         "",
     correo:       "",
-    salaMedico: this.sala,
     especialidad: this.especialidad
   }
 

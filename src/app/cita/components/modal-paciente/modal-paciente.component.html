@@ -1,0 +1,24 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <mat-form-field class="example-full-width">
+          <mat-label>Assignee</mat-label>
+          <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="paciente">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+             {{option.codigo}} {{option.nombre}} {{option.apellido}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="functionEnviarPaciente()" data-bs-dismiss="modal">Seleccionar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { Observable, startWith, map, Subject } from 'rxjs';
 import { PacienteService } from 'src/app/paciente/services/paciente.service';
 import { CitaService } from '../../services/cita.service';
+import { SalaService } from '../../services/sala.service';
 
 @Component({
   selector: 'app-modal',
@@ -47,7 +48,6 @@ export class ModalComponent {
     "edad":         0,
     "sexo":         "",
     "correo":       "",
-    "salaMedico": this.sala,
     "especialidad": this.especialidad
   }
 
@@ -74,7 +74,8 @@ export class ModalComponent {
   constructor(private serEspecialidad:EspecialidadService,
               private serMedico:MedicoService,
               private serPaciente:PacienteService,
-              private serCita:CitaService){
+              private serCita:CitaService,
+              private serSala:SalaService){
 
                 this.filteredOptions = this.controlPaciente.valueChanges.pipe(
                   startWith(''),
@@ -222,11 +223,10 @@ export class ModalComponent {
     }
 
     console.log("se define la sala de la cita, el medico es " + this.medico.codigo);
-    this.serMedico.searchById(this.medico.codigo).subscribe(response=>{
-      if(response){
-        this.medico=response;
 
-        this.sala.codigo=this.medico.salaMedico.codigo;
+    this.serSala.listByEspe(this.especialidad.codigo).subscribe(response=>{
+      if(response){
+        this.sala.codigo=response[0].codigo;
       }
     })
   }

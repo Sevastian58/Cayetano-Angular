@@ -11,7 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import Swal from 'sweetalert2';
 import { SearchCitaComponent } from './pages/search-cita/search-cita.component';
-import { TableComponent } from './components/table/table.component'
+import { TableComponent } from './components/table/table.component';
+import { ModalPacienteComponent } from './components/modal-paciente/modal-paciente.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TableComponent } from './components/table/table.component'
     CalendarComponent,
     ModalComponent,
     SearchCitaComponent,
-    TableComponent
+    TableComponent,
+    ModalPacienteComponent
   ],
   imports: [
     CommonModule,

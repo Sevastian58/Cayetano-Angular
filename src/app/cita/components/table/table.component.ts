@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { Cita } from '../../interfaces/cita';
 
 @Component({
@@ -11,6 +11,7 @@ export class TableComponent {
   dtOptions: DataTables.Settings = {};
   @Output() valorEnviado = new EventEmitter<string>();
   //lista de citas
+  @Input()
   citaList:Cita[]=[];
 
 

@@ -9,7 +9,6 @@ export interface Medico {
   edad:         number;
   sexo:         string;
   correo:       string;
-  salaMedico:   Sala;
   especialidad: Especialidad;
 }
 

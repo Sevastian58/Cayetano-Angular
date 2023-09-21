@@ -3,19 +3,102 @@
     <app-nav-bar></app-nav-bar>
     <div class="d-flex flex-column container-fluid">
       <app-titulo class="container-fluid" [titulo]="titulo" ></app-titulo>
-      <div >
-        <div id="verCita-cabecera" class="d-flex flex-row justify-content-around">
+      <div style="width: 100vw;">
+        <div  id="citaCabecera01" class="d-flex flex-wrap justify-content-around">
           <mat-card>
-            <mat-card-content class="cita-paciente">Simple card</mat-card-content>
+            <mat-card-content class="cita-paciente d-flex flex-wrap justify-content-between mb-2 p-3 ">
+              <div class="mb-3 col-3">
+                <label  class="form-label">Codigo</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled [(ngModel)]="paciente.codigo">
+
+              </div>
+              <div class="mb-3 col-6">
+                <label  class="form-label">Nombres y Apellidos</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled [(ngModel)]="paciente.nombre +' ' +  paciente.apellido">
+
+              </div>
+              <div class="mb-3 col-4">
+                <label  class="form-label">Edad</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled [(ngModel)]="paciente.edad">
+
+              </div>
+
+
+              <button mat-raised-button color="primary" class="p-3 m-4" data-bs-toggle="modal"
+               data-bs-target="#staticBackdrop">
+                Buscar<br>Paciente
+              </button>
+
+            </mat-card-content>
           </mat-card>
           <mat-card>
-            <mat-card-content class="cita-otros">Simple card</mat-card-content>
+            <mat-card-content id="cita-otros" class="d-flex flex-column mb-2 align-items-around">
+
+              <div class="cita-otros-first-level d-flex flex-row justify-content-around">
+
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="especialidad.codigo" (change)="listarMedicosEspecialidad()">
+                  <option value="0">[Seleccione una especialidad]</option>
+                  <option  *ngFor="let item of listaEspecialidades"  [value]="item.codigo">{{item.nombre}}</option>
+                </select>
+
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="medico.codigo">
+                  <option value="0">[Seleccione un Médico]</option>
+                  <option  *ngFor="let item of listaMedicos"  [value]="item.codigo"> {{item.nombre}}</option>
+                </select>
+              </div>
+
+              <div class="cita-otros-second-level d-flex flex-row justify-content-between">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Fecha</label>
+                  <input type="date" class="form-control" id="fecha" aria-describedby="emailHelp" [(ngModel)]="cita.fecha">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <button mat-raised-button color="primary" class="p-3 m-4">Buscar<br>Citas</button>
+                <button mat-raised-button color="primary" class="p-3 m-4" (click)="verCita()">Ver<br>Cita</button>
+              </div>
+
+
+            </mat-card-content>
           </mat-card>
         </div>
-        <div id="verCita-cuerpo">
-          <app-table></app-table>
+        <div  id="citaCabecera02" class="d-flex flex-wrap justify-content-around" >
+          <mat-card>
+            <mat-card-content id="cita-datos" class="d-flex flex-column mb-2 align-items-around">
+
+              <div class="cita-otros-first-level d-flex flex-row justify-content-around">
+
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="especialidad.codigo" (change)="listarMedicosEspecialidad()">
+
+                  <option  *ngFor="let item of listaEspecialidades"  [value]="item.codigo">{{item.nombre}}</option>
+                </select>
+
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="medico.codigo">
+
+                  <option  *ngFor="let item of listaMedicos"  [value]="item.codigo"> {{item.nombre}}</option>
+                </select>
+              </div>
+
+              <div class="cita-otros-second-level d-flex flex-row justify-content-between">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Fecha</label>
+                  <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <button mat-raised-button color="primary" class="p-3 m-4" id="btnBuscarCita" (click)="buscarCita()">Buscar<br>Citas</button>
+                <button mat-raised-button color="primary" class="p-3 m-4">Modificar<br>Cita</button>
+
+              </div>
+
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div id="verCita-cuerpo" class="text-center">
+          <app-table [citaList]="listaCitas"></app-table>
         </div>
       </div>
     </div>
   </mat-sidenav-container>
 </div>
+
+<app-modal-paciente (enviarPaciente)="recibirPaciente($event)" ></app-modal-paciente>
